@@ -1,12 +1,12 @@
 /*
-    _   ___ ___  _   _ ___ _  _  ___  _    ___   ___ 
+    _   ___ ___  _   _ ___ _  _  ___  _    ___   ___
    /_\ | _ \   \| | | |_ _| \| |/ _ \| |  / _ \ / __|
   / _ \|   / |) | |_| || || .` | (_) | |_| (_) | (_ |
  /_/ \_\_|_\___/ \___/|___|_|\_|\___/|____\___/ \___|
-                                                     
+
   Log library for Arduino
   version 1.0.3
-  https://github.com/thijse/Arduino-Log
+  https://github.com/Yohannfra/Arduino-Log
 
 Licensed under the MIT License <http://opensource.org/licenses/MIT>.
 
@@ -88,7 +88,7 @@ void Logging::setSuffix(printfunction f)
 
 void Logging::print(const __FlashStringHelper *format, va_list args)
 {
-#ifndef DISABLE_LOGGING	  	
+#ifndef DISABLE_LOGGING
 	PGM_P p = reinterpret_cast<PGM_P>(format);
 	char c = pgm_read_byte(p++);
 	for(;c != 0; c = pgm_read_byte(p++))
@@ -107,7 +107,7 @@ void Logging::print(const __FlashStringHelper *format, va_list args)
 }
 
 void Logging::print(const char *format, va_list args) {
-#ifndef DISABLE_LOGGING	  	
+#ifndef DISABLE_LOGGING
 	for (; *format != 0; ++format)
 	{
 		if (*format == '%')
@@ -201,5 +201,5 @@ void Logging::printFormat(const char format, va_list *args) {
 	}
 #endif
 }
- 
+
 Logging Log = Logging();
