@@ -13,6 +13,7 @@ ArduinoLog is a minimalistic framework to help the programmer output log stateme
 - Supports formatted strings
 - Supports formatted strings from flash memory
 - Fixed memory allocation (zero malloc)
+- Optional ANSI colors
 - MIT License
 
 ## Tested for
@@ -112,6 +113,38 @@ where the format string can be used to format the log variables
 ```
 
 Newlines can be added using the CR keyword or by using the ...ln version of each of the log functions.
+
+### Enabling colors
+
+To enable colors define **ARDUINO_LOGS_ENABLE_COLORS**
+```c
+#define ARDUINO_LOGS_ENABLE_COLORS
+```
+
+Once the colors are enabled the following color will be used automatically for each event:
+- fatal -> bright red
+- error -> red
+- warning -> yellow
+- notice -> green
+- trace, verbose -> white
+
+Example
+
+```cpp
+Log.fatal("Fatal log");
+Log.error("Error log");
+Log.warning("Warning log");
+Log.notice("Notice log");
+Log.trace("Trace log");
+Log.verbose("Verbose log");
+```
+
+
+
+![screenshot](.github/with_colors.png)
+
+
+
 
 ### Storing messages in Flash memory
 
