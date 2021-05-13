@@ -191,9 +191,7 @@ in `Logging.h`. This may significantly reduce your project size.
 
 Based on [this library](https://github.com/thijse/Arduino-Log) by [Thijs Elenbaas](https://github.com/thijse)
 
-I forked his project since it seemed to be unmaintained and I needed this library for a project.
-
-I also added **CRLF** define.
+I forked his project since it seemed to be unmaintained and I needed to add features and to use this library for a project.
 
 ## Copyright
 
