@@ -292,7 +292,7 @@ private:
                 _logOutput->print(ARDUINO_LOG_GREEN);
                 break;
             default:
-                break
+                break;
         }
 #    endif
 
@@ -315,8 +315,7 @@ private:
         }
 
 #    ifdef ARDUINO_LOGS_ENABLE_COLORS
-        if (level == LLOG_LEVEL_FATAL ||
-            level == LOG_LEVEL_ERLOG_LEVEL_ERROR ||
+        if (level == LOG_LEVEL_FATAL || level == LOG_LEVEL_ERROR ||
             level == LOG_LEVEL_WARNING || level == LOG_LEVEL_NOTICE) {
             _logOutput->print(ARDUINO_LOG_RESET);
         }
