@@ -41,6 +41,14 @@ typedef void (*printfunction)(Print *);
 #define CR "\n"
 #define CRLF "\r\n"
 
+#ifdef ARDUINO_LOGS_ENABLE_COLORS
+#    define ARDUINO_LOG_GREEN "\033[1;32m"
+#    define ARDUINO_LOG_YELLOW "\033[1;33m"
+#    define ARDUINO_LOG_RED "\033[1;31m"
+#    define ARDUINO_LOG_BRIGHT_RED "\033[1;91m"
+#    define ARDUINO_LOG_RESET "\033[0m"
+#endif
+
 #define LOGGING_VERSION 1_0_4
 
 /**
@@ -269,6 +277,25 @@ private:
             return;
         }
 
+#    ifdef ARDUINO_LOGS_ENABLE_COLORS
+        switch (level) {
+            case LOG_LEVEL_FATAL:
+                _logOutput->print(ARDUINO_LOG_BRIGHT_RED);
+                break;
+            case LOG_LEVEL_ERROR:
+                _logOutput->print(ARDUINO_LOG_RED);
+                break;
+            case LOG_LEVEL_WARNING:
+                _logOutput->print(ARDUINO_LOG_YELLOW);
+                break;
+            case LOG_LEVEL_NOTICE:
+                _logOutput->print(ARDUINO_LOG_GREEN);
+                break;
+            default:
+                break
+        }
+#    endif
+
         if (_prefix != NULL) {
             _prefix(_logOutput);
         }
@@ -286,6 +313,15 @@ private:
         if (_suffix != NULL) {
             _suffix(_logOutput);
         }
+
+#    ifdef ARDUINO_LOGS_ENABLE_COLORS
+        if (level == LLOG_LEVEL_FATAL ||
+            level == LOG_LEVEL_ERLOG_LEVEL_ERROR ||
+            level == LOG_LEVEL_WARNING || level == LOG_LEVEL_NOTICE) {
+            _logOutput->print(ARDUINO_LOG_RESET);
+        }
+#    endif
+
 #endif
     }
 
