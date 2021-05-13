@@ -5,7 +5,7 @@
  /_/ \_\_|_\___/ \___/|___|_|\_|\___/|____\___/ \___|
 
   Log library for Arduino
-  version 1.0.5
+  version 1.0.6
   https://github.com/Yohannfra/Arduino-Log
 
 Licensed under the MIT License <http://opensource.org/licenses/MIT>.
